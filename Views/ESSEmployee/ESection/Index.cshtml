@@ -1,0 +1,227 @@
+﻿@using CrudIntern.Models.ESSEmployee
+@model List<ESection>
+@{
+}
+
+<h2 class="text-center mb-5">List Section</h2>
+<div class="row mb-5">
+    <div class="col-md-6">
+        <!-- Search Bar -->
+        <div class="input-group">
+            <input type="text" id="searchSection" class="form-control" placeholder="Search by Section name...">
+            <div class="input-group-append">
+                <span class="input-group-text">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-right">
+        <!-- Create Button -->
+        <button id="openCreateModal" class="btn btn-success" data-toggle="modal" data-target="#createModal">
+            <i class="fas fa-plus"></i> New Section
+        </button>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Section List</h3>
+    </div>
+    <div class="card-body">
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>DepartmentId</th>
+                    <th>Code</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Section in Model)
+                {
+                    <tr>
+                        <td>@Section.Id</td>
+                        <td>@(Section.Name ?? "N/A")</td>
+                        <td>@(Section.Value ?? "N/A")</td>
+                        <td>@(Section.DepartmentId.HasValue ? Section.DepartmentId.ToString() : "N/A")</td>
+                        <td>@(Section.Code ?? "N/A")</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="openEditModal('@Section.Id', '@(Section.Name ?? "N/A")', '@(Section.Value ?? "N/A")', '@(Section.DepartmentId.HasValue ? Section.DepartmentId.ToString() : "N/A")', '@(Section.Code ?? "N/A")')">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<!-- Create Modal -->
+<div id="createModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New Section</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createSectionForm" method="post" asp-controller="ESection" asp-action="Create">
+                    <div class="form-group">
+                        <label for="Name">Section Name</label>
+                        <input type="text" class="form-control" id="Name" name="Name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Value">Value</label>
+                        <input type="text" class="form-control" id="Value" name="Value" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Value">DepartmentId</label>
+                        <input type="text" class="form-control" id="Value" name="Value" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Section">Code</label>
+                        <input type="text" class="form-control" id="Code" name="Code" required />
+                    </div>
+                    <button type="submit" class="btn btn-success">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Section</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="editErrorAlert" class="alert alert-danger" style="display: none;"></div>
+
+                <form id="editSectionForm" method="post" asp-controller="ESection" asp-action="Edit">
+                    <input type="hidden" id="editSectionId" name="Id" />
+                    <div class="form-group">
+                        <label for="editName">Section Name</label>
+                        <input type="text" class="form-control" id="editName" name="Name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editValue">Section Value</label>
+                        <input type="text" class="form-control" id="editValue" name="Value" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editDepartmentId">DepartmentId</label>
+                        <input type="text" class="form-control" id="editDepartmentId" name="DepartmentId" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editSection">Code</label>
+                        <input type="text" class="form-control" id="editCode" name="Code" required />
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery Validation -->
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<!-- Bootstrap and jQuery -->
+<link rel="stylesheet" href="~/css/bootstrap.min.css">
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- SweetAlert -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    function openEditModal(id, name, value, departmentId, code) {
+        $('#editSectionId').val(id);
+        $('#editName').val(name);
+        $('#editValue').val(value);
+        $('#editDepartmentId').val(departmentId);
+        $('#editCode').val(code);
+
+        $('#editModal').modal('show');
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#searchSection').on('keyup', function () {
+            var value = $(this).val().toLowerCase();
+            $('.table tbody tr').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $('#createSectionForm').on('submit', function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        swal("Success!", "Section created successfully!", "success").then(() => {
+                            $('#createModal').modal('hide');
+                            location.reload();
+                        });
+                    } else {
+                        swal("Error!", response.message, "error");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    swal("Error!", "An error occurred. Please try again.", "error");
+                }
+            });
+        });
+
+        $('#editSectionForm').on('submit', function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        swal("Success!", "Section updated successfully!", "success").then(() => {
+                            $('#editModal').modal('hide');
+                            location.reload();
+                        });
+                    } else {
+                        swal("Error!", response.message, "error");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    swal("Error!", "An error occurred. Please try again.", "error");
+                }
+            });
+        });
+    });
+</script>
