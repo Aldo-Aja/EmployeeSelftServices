@@ -31,3 +31,153 @@
         text-decoration: none;
         cursor: pointer;
     }
+
+.sidebar {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.nav-treeview .nav-item .nav-link {
+    padding-left: 20px;
+}
+
+.sidebar-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+.settings-container {
+    position: relative;
+}
+
+.settings-options {
+    display: none;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.settings-container:hover .settings-options {
+    display: block;
+}
+
+.settings-options li {
+    background-color: #343a40;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 4px;
+}
+
+    .settings-options li a {
+        color: white;
+    }
+
+        .settings-options li a:hover {
+            background-color: #495057;
+        }
+
+.settings-button {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+    .settings-button p {
+        margin-left: 5px;
+        font-size: 16px;
+    }
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+    body.dark-mode .sidebar {
+        background-color: #1f1f1f;
+    }
+
+    body.dark-mode .navbar {
+        background-color: #1f1f1f;
+    }
+
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-bottom {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    text-align: center; /* Centers the content */
+}
+
+.settings-container {
+    position: relative;
+}
+
+.settings-options {
+    display: none;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.settings-container:hover .settings-options {
+    display: block;
+}
+
+.settings-options li {
+    background-color: #343a40;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 4px;
+}
+
+.settings-options li a {
+    color: white;
+}
+
+.settings-options li a:hover {
+    background-color: #495057;
+}
+
+.settings-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.settings-button p {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode .sidebar {
+    background-color: #1f1f1f;
+}
+
+body.dark-mode .navbar {
+    background-color: #1f1f1f;
+}
+

@@ -10,19 +10,9 @@
     <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="~/css/adminlte.min.css">
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
-        /* Make sidebar scrollable */
-        .sidebar {
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .nav-treeview .nav-item .nav-link {
-            padding-left: 20px;
-        }
-    </style>
 
     @RenderSection("Styles", required: false)
 </head>
@@ -170,9 +160,55 @@
                                         <p>Section</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EStatusOwner" asp-action="Index">
+                                        <i class="nav-icon fas fa-house"></i>
+                                        <p>Status Owner</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EStayStatus" asp-action="Index">
+                                        <i class="nav-icon fas fa-house-circle-check"></i>
+                                        <p>Stay Status</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EUniversity" asp-action="Index">
+                                        <i class="nav-icon fas fa-graduation-cap"></i>
+                                        <p>University</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EWorkLocation" asp-action="Index">
+                                        <i class="nav-icon fas fa-house-laptop"></i>
+                                        <p>Work Location</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="MAssigmentStatus" asp-action="Index">
+                                        <i class="nav-icon fas fa-clipboard-check"></i>
+                                        <p>Assigment Status</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
+                    <div class="sidebar-bottom">
+                        <div class="settings-container">
+                            <a href="#" class="nav-link settings-button">
+                                <i class="nav-icon fas fa-cog"></i>
+                                <p>Settings</p>
+                            </a>
+                            <ul class="settings-options">
+                                <li>
+                                    <a href="#" id="darkModeToggle">
+                                        <i class="nav-icon fas fa-moon"></i>
+                                        <p>Dark Mode</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </aside>
@@ -209,6 +245,7 @@
     <script src="~/plugins/jquery/jquery.min.js"></script>
     <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/adminlte.min.js"></script>
+    <script src="~/js/site.js"></script>
 
 
     @RenderSection("Scripts", required: false)
