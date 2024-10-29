@@ -1,7 +1,8 @@
-﻿using CrudIntern.Services;
+﻿using CrudIntern.Models.ESSEmployee;
+using CrudIntern.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CrudIntern.Models.ESSEmployee
+namespace CrudIntern.Controllers.ESSEmployee
 {
     public class ESectionController : Controller
     {
@@ -15,14 +16,14 @@ namespace CrudIntern.Models.ESSEmployee
         {
             ViewData["CurrentFilter"] = searchTerm;
             var Section = from c in context.ESections
-                             select new ESection
-                             {
-                                 Id = c.Id,
-                                 Name = c.Name ?? "N/A",
-                                 Value = c.Value ?? "N/A",
-                                 DepartmentId = c.DepartmentId ?? 0,
-                                 Code = c.Code ?? "N/A"
-                             };
+                          select new ESection
+                          {
+                              Id = c.Id,
+                              Name = c.Name ?? "N/A",
+                              Value = c.Value ?? "N/A",
+                              DepartmentId = c.DepartmentId ?? 0,
+                              Code = c.Code ?? "N/A"
+                          };
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 Section = Section.Where(b => b.Name.Contains(searchTerm));

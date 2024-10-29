@@ -11,6 +11,11 @@ builder.Services.AddDbContext<MyAppDbContext>(options =>
     var ConnEmplo = builder.Configuration.GetConnectionString("ConnEmplo");
     options.UseSqlServer(ConnEmplo);
 });
+builder.Services.AddDbContext<FinanceDbContext>(options =>
+{
+    var ConnFinn = builder.Configuration.GetConnectionString("ConnFinn");
+    options.UseSqlServer(ConnFinn);
+});
 
 var app = builder.Build();
 

@@ -1,0 +1,348 @@
+﻿@using CrudIntern.Models.ESSFinance
+@model List<MBenefitGradeConfig>
+@{
+}
+
+<h2 class="text-center mb-5">List BenefitGradeConfig</h2>
+<div class="row mb-5">
+    <div class="col-md-6">
+        <!-- Search Bar -->
+        <div class="input-group">
+            <input type="text" id="searchBenefitGradeConfig" class="form-control" placeholder="Search by BenefitGradeConfig name...">
+            <div class="input-group-append">
+                <span class="input-group-text">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-right">
+        <!-- Create Button -->
+        <button id="openCreateModal" class="btn btn-success" data-toggle="modal" data-target="#createModal">
+            <i class="fas fa-plus"></i> New BenefitGradeConfig
+        </button>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">BenefitGradeConfig List</h3>
+    </div>
+    <div class="card-body">
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Grade</th>
+                    <th>Optical Frame</th>
+                    <th>Optical Lense</th>
+                    <th>Medical</th>
+                    <th>Pointing</th>
+                    <th>Loan</th>
+                    <th>RA</th>
+                    <th>Is Overtime</th>
+                    <th>Config Type</th>
+                    <th>COP</th>
+                    <th>Car Loan</th>
+                    <th>Home Renovation</th>
+                    <th>Emergency Loan</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var config in Model)
+                {
+                    <tr>
+                        <td>@(config.Grade ?? "N/A")</td>
+                        <td>@(config.OpticalFrame?.ToString() ?? "N/A")</td>
+                        <td>@(config.OpticalLense?.ToString() ?? "N/A")</td>
+                        <td>@(config.Medical?.ToString() ?? "N/A")</td>
+                        <td>@(config.Pointing?.ToString() ?? "N/A")</td>
+                        <td>@(config.Loan?.ToString() ?? "N/A")</td>
+                        <td>@(config.Ra?.ToString() ?? "N/A")</td>
+                        <td>@((config.IsOvertime.HasValue) ? (config.IsOvertime.Value ? "1" : "2") : "N/A")</td>
+                        <td>@(config.ConfigType ?? "N/A")</td>
+                        <td>@(config.Cop?.ToString() ?? "N/A")</td>
+                        <td>@(config.CarLoan?.ToString() ?? "N/A")</td>
+                        <td>@(config.HomeRenov?.ToString() ?? "N/A")</td>
+                        <td>@(config.EmergencyLoan?.ToString() ?? "N/A")</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm"
+                                    onclick="openEditModal('@config.Id',
+                                  '@(config.Grade ?? "N/A")',
+                                  @(config.OpticalFrame.HasValue ? config.OpticalFrame.Value.ToString() : "N/A"),
+                                  @(config.OpticalLense.HasValue ? config.OpticalLense.Value.ToString() : "N/A"),
+                                  @(config.Medical.HasValue ? config.Medical.Value.ToString() : "N/A"),
+                                  @(config.Pointing.HasValue ? config.Pointing.Value.ToString() : "N/A"),
+                                  @(config.Loan.HasValue ? config.Loan.Value.ToString() : "N/A"),
+                                  @(config.Ra.HasValue ? config.Ra.Value.ToString() : "N/A"),
+                                  @((config.IsOvertime.HasValue) ? (config.IsOvertime.Value ? "true" : "false") : "N/A"),
+                                  '@(config.ConfigType ?? "N/A")',
+                                  @(config.Cop.HasValue ? config.Cop.Value.ToString() : "N/A"),
+                                  @(config.CarLoan.HasValue ? config.CarLoan.Value.ToString() : "N/A"),
+                                  @(config.HomeRenov.HasValue ? config.HomeRenov.Value.ToString() : "N/A"),
+                                  @(config.EmergencyLoan.HasValue ? config.EmergencyLoan.Value.ToString() : "N/A")')">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<!-- Create Modal -->
+<div id="createModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New Benefit Grade Config</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createBenefitGradeConfigForm" method="post" asp-controller="MBenefitGradeConfig" asp-action="Create">
+                    <!-- Form fields for each model property -->
+                    <div class="form-group">
+                        <label for="Grade">Grade</label>
+                        <input type="text" class="form-control" id="Grade" name="Grade" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="OpticalFrame">Optical Frame</label>
+                        <input type="number" class="form-control" id="OpticalFrame" name="OpticalFrame" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="OpticalLense">Optical Lense</label>
+                        <input type="number" class="form-control" id="OpticalLense" name="OpticalLense" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Medical">Medical</label>
+                        <input type="number" class="form-control" id="Medical" name="Medical" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Pointing">Pointing</label>
+                        <input type="number" class="form-control" id="Pointing" name="Pointing" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Loan">Loan</label>
+                        <input type="number" class="form-control" id="Loan" name="Loan" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Ra">RA</label>
+                        <input type="number" class="form-control" id="Ra" name="Ra" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="IsOvertime">Is Overtime</label>
+                        <select class="form-control" id="IsOvertime" name="IsOvertime" required>
+                            <option value="true">1</option>
+                            <option value="false">2</option>
+                            <option value="">N/A</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ConfigType">Config Type</label>
+                        <input type="text" class="form-control" id="ConfigType" name="ConfigType" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Cop">COP</label>
+                        <input type="number" class="form-control" id="Cop" name="Cop" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="CarLoan">Car Loan</label>
+                        <input type="number" class="form-control" id="CarLoan" name="CarLoan" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="HomeRenov">Home Renovation</label>
+                        <input type="number" class="form-control" id="HomeRenov" name="HomeRenov" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="EmergencyLoan">Emergency Loan</label>
+                        <input type="number" class="form-control" id="EmergencyLoan" name="EmergencyLoan" required />
+                    </div>
+                    <button type="submit" class="btn btn-success">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Benefit Grade Config</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editBenefitGradeConfigForm" method="post" asp-controller="MBenefitGradeConfig" asp-action="Edit">
+                    <input type="hidden" id="editBenefitGradeConfigId" name="Id" />
+
+                    <div class="form-group">
+                        <label for="editGrade">Grade</label>
+                        <input type="text" class="form-control" id="editGrade" name="Grade" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editOpticalFrame">Optical Frame</label>
+                        <input type="number" class="form-control" id="editOpticalFrame" name="OpticalFrame" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editOpticalLense">Optical Lense</label>
+                        <input type="number" class="form-control" id="editOpticalLense" name="OpticalLense" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editMedical">Medical</label>
+                        <input type="number" class="form-control" id="editMedical" name="Medical" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editPointing">Pointing</label>
+                        <input type="number" class="form-control" id="editPointing" name="Pointing" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editLoan">Loan</label>
+                        <input type="number" class="form-control" id="editLoan" name="Loan" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editRa">RA</label>
+                        <input type="number" class="form-control" id="editRa" name="Ra" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editIsOvertime">Is Overtime</label>
+                        <select class="form-control" id="editIsOvertime" name="IsOvertime" required>
+                            <option value="true">1</option>
+                            <option value="false">2</option>
+                            <option value="">N/A</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editConfigType">Config Type</label>
+                        <input type="text" class="form-control" id="editConfigType" name="ConfigType" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editCop">COP</label>
+                        <input type="number" class="form-control" id="editCop" name="Cop" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editCarLoan">Car Loan</label>
+                        <input type="number" class="form-control" id="editCarLoan" name="CarLoan" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editHomeRenov">Home Renovation</label>
+                        <input type="number" class="form-control" id="editHomeRenov" name="HomeRenov" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmergencyLoan">Emergency Loan</label>
+                        <input type="number" class="form-control" id="editEmergencyLoan" name="EmergencyLoan" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery Validation -->
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<!-- Bootstrap and jQuery -->
+<link rel="stylesheet" href="~/css/bootstrap.min.css">
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- SweetAlert -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    function openEditModal(id, grade, opticalFrame, opticalLense, medical, pointing, loan, ra, isOvertime, configType, cop, carLoan, homeRenov, emergencyLoan) {
+        $('#editBenefitGradeConfigId').val(id);
+        $('#editGrade').val(grade);
+        $('#editOpticalFrame').val(opticalFrame);
+        $('#editOpticalLense').val(opticalLense);
+        $('#editMedical').val(medical);
+        $('#editPointing').val(pointing);
+        $('#editLoan').val(loan);
+        $('#editRa').val(ra);
+        $('#editIsOvertime').val(isOvertime);
+        $('#editConfigType').val(configType);
+        $('#editCop').val(cop);
+        $('#editCarLoan').val(carLoan);
+        $('#editHomeRenov').val(homeRenov);
+        $('#editEmergencyLoan').val(emergencyLoan);
+        $('#editModal').modal('show');
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#searchBenefitGradeConfig').on('keyup', function () {
+            var value = $(this).val().toLowerCase();
+            $('.table tbody tr').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        $('#creatMBenefitGradeConfigForm').on('submit', function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        swal("Success!", "BenefitGradeConfig created successfully!", "success").then(() => {
+                            $('#createModal').modal('hide');
+                            location.reload();
+                        });
+                    } else {
+                        swal("Error!", response.message, "error");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    swal("Error!", "An error occurred. Please try again.", "error");
+                }
+            });
+        });
+
+        $('#editBenefitGradeConfigForm').on('submit', function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        swal("Success!", "BenefitGradeConfig updated successfully!", "success").then(() => {
+                            $('#editModal').modal('hide');
+                            location.reload();
+                        });
+                    } else {
+                        swal("Error!", response.message, "error");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    swal("Error!", "An error occurred. Please try again.", "error");
+                }
+            });
+        });
+    });
+</script>

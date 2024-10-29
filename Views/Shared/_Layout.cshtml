@@ -192,23 +192,178 @@
                                 </li>
                             </ul>
                         </li>
-                    </ul>
-                    <div class="sidebar-bottom">
-                        <div class="settings-container">
-                            <a href="#" class="nav-link settings-button">
-                                <i class="nav-icon fas fa-cog"></i>
-                                <p>Settings</p>
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-money-bill-wave"></i>
+                                <p>
+                                    Finance Settings
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
-                            <ul class="settings-options">
-                                <li>
-                                    <a href="#" id="darkModeToggle">
-                                        <i class="nav-icon fas fa-moon"></i>
-                                        <p>Dark Mode</p>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="MAttnCustomer" asp-action="Index">
+                                        <i class="nav-icon fas fa-users-viewfinder"></i>
+                                        <p>AttnCustomer</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="MBankingRoutingCode" asp-action="Index">
+                                        <i class="nav-icon fas fa-money-bill-transfer"></i>
+                                        <p>Banking Routing Code</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="MBenefitGradeConfig" asp-action="Index">
+                                        <i class="nav-icon fas fa-vault"></i>
+                                        <p>Benefit Grade Config</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="ECountry" asp-action="Index">
+                                        <i class="nav-icon fas fa-globe"></i>
+                                        <p>Countries</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EDepartment" asp-action="Index">
+                                        <i class="nav-icon fas fa-building-user"></i>
+                                        <p>Departments</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EEducation" asp-action="Index">
+                                        <i class="nav-icon fas fa-user-graduate"></i>
+                                        <p>Education</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EEmployeeStatus" asp-action="Index">
+                                        <i class="nav-icon fas fa-user-tag"></i>
+                                        <p>Employee Status</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EGrade" asp-action="Index">
+                                        <i class="nav-icon fas fa-arrow-down-short-wide"></i>
+                                        <p>Grade</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EGradeCategory" asp-action="Index">
+                                        <i class="nav-icon fas fa-arrow-down-a-z"></i>
+                                        <p>Grade Category</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EHardshipLocation" asp-action="Index">
+                                        <i class="nav-icon fas fa-ship"></i>
+                                        <p>Hardship Location</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EInsurance" asp-action="Index">
+                                        <i class="nav-icon fas fa-file-circle-check"></i>
+                                        <p>Insurance</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EMaritalStatus" asp-action="Index">
+                                        <i class="nav-icon fas fa-children"></i>
+                                        <p>Marital Status</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="ENationality" asp-action="Index">
+                                        <i class="nav-icon fas fa-globe"></i>
+                                        <p>Nationalities</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EOccupation" asp-action="Index">
+                                        <i class="nav-icon fas fa-file-lines"></i>
+                                        <p>Occupation</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EPosition" asp-action="Index">
+                                        <i class="nav-icon fas fa-sitemap"></i>
+                                        <p>Position</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EProvince" asp-action="Index">
+                                        <i class="nav-icon fas fa-earth-europe"></i>
+                                        <p>Province</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="ERelationship" asp-action="Index">
+                                        <i class="nav-icon fas fa-people-roof"></i>
+                                        <p>Relationship</p>
+                                    </a>
+                                </li> 
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EReligion" asp-action="Index">
+                                        <i class="nav-icon fas fa-person-praying"></i>
+                                        <p>Religion</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="ESection" asp-action="Index">
+                                        <i class="nav-icon fas fa-sitemap"></i>
+                                        <p>Section</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EStatusOwner" asp-action="Index">
+                                        <i class="nav-icon fas fa-house"></i>
+                                        <p>Status Owner</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EStayStatus" asp-action="Index">
+                                        <i class="nav-icon fas fa-house-circle-check"></i>
+                                        <p>Stay Status</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EUniversity" asp-action="Index">
+                                        <i class="nav-icon fas fa-graduation-cap"></i>
+                                        <p>University</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="EWorkLocation" asp-action="Index">
+                                        <i class="nav-icon fas fa-house-laptop"></i>
+                                        <p>Work Location</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="MAssigmentStatus" asp-action="Index">
+                                        <i class="nav-icon fas fa-clipboard-check"></i>
+                                        <p>Assigment Status</p>
                                     </a>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
+                   @*   <div class="sidebar-bottom">
+                         <div class="settings-container">
+                             <a href="#" class="nav-link settings-button">
+                                 <i class="nav-icon fas fa-cog"></i>
+                                 <p>Settings</p>
+                             </a>
+                             <ul class="settings-options">
+                                 <li>
+                                     <a href="#" id="darkModeToggle">
+                                         <i class="nav-icon fas fa-moon"></i>
+                                         <p>Dark Mode</p>
+                                     </a>
+                                 </li>
+                             </ul>
+                         </div>
+                     </div> *@
                 </nav>
             </div>
         </aside>
